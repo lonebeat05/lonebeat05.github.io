@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火车游戏 - 真实驾驶模拟与策略运营平台</title>
+    <meta name="description" content="探索最优质的火车游戏，包含硬核铁路模拟器、列车运输经营模拟及休闲益智游戏。体验驾驶高铁、货运列车穿越复杂地形的乐趣，或管理庞大的铁路网络。">
+    <meta name="keywords" content="火车游戏, 火车模拟, 铁路经营, 高铁模拟, 货运列车">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --secondary-color: #3498db;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content Grid */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            color: var(--primary-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 180px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        /* Feature List Section */
+        .features-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        details {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+            position: relative;
+            padding-right: 40px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        .faq-content {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #bdc3c7;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                display: none; /* Simplified for mobile demo */
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M6 8h.01"></path>
+                <path d="M10 8h.01"></path>
+                <path d="M14 8h.01"></path>
+                <path d="M18 8h.01"></path>
+                <path d="M6 12h.01"></path>
+                <path d="M10 12h.01"></path>
+                <path d="M14 12h.01"></path>
+                <path d="M18 12h.01"></path>
+                <path d="M6 16h.01"></path>
+                <path d="M10 16h.01"></path>
+                <path d="M14 16h.01"></path>
+                <path d="M18 16h.01"></path>
+            </svg>
+            <span>TrainSim</span> 游戏库
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">硬核模拟</a></li>
+                <li><a href="#">经营运营</a></li>
+                <li><a href="#">休闲益智</a></li>
+                <li><a href="#">新手指南</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>体验火车游戏的极致魅力</h1>
+        <p>从精密的机车控制到宏大的铁路网络规划，在这里找到属于你的铁路世界。</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">开始模拟驾驶</a>
+            <a href="#" class="btn btn-secondary">浏览推荐列表</a>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+    
+    <section>
+        <h2 class="section-title">热门游戏推荐</h2>
+        <div class="category-grid">
+            <!-- Card 1 -->
+            <article class="card">
+                <div class="card-image">
+                    <span class="card-badge">硬核</span>
+                    <img src="https://picsum.photos/seed/train1/400/250" alt="高铁模拟驾驶画面">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">高铁模拟大师：极速版</h3>
+                    <p class="card-desc">极致还原高铁驾驶舱操作，包含真实的信号系统、制动逻辑和隧道驾驶体验。挑战在复杂的城市环境中安全将列车准时送达。</p>
+                    <div class="card-meta">
+                        <span>平台: PC / 移动端</span>
+                        <span>评分: 4.8/5.0</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+                <div class="card-image">
+                    <span class="card-badge">经营</span>
+                    <img src="https://picsum.photos/seed/train2/400/250" alt="货运列车调度画面">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">铁路帝国：货运传奇</h3>
+                    <p class="card-desc">建立你的铁路帝国，从单一的货运站扩展到跨国物流网络。管理列车时刻表、优化运输路线、收购竞争对手，成为铁路大亨。</p>
+                    <div class="card-meta">
+                        <span>平台: PC / Switch</span>
+                        <span>评分: 4.5/5.0</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+                <div class="card-image">
+                    <span class="card-badge">休闲</span>
+                    <img src="https://picsum.photos/seed/train3/400/250" alt="儿童益智火车游戏">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">小小火车头</h3>
+                    <p class="card-desc">专为儿童设计的益智游戏，通过拖拽和连接车厢来运送货物，培养逻辑思维和空间想象力。色彩鲜艳，操作简单。</p>
+                    <div class="card-meta">
+                        <span>平台: 全平台</span>
+                        <span>评分: 4.9/5.0</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2 class="section-title">为什么选择火车游戏？</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">⚙️</div>
+                <h3 class="feature-title">硬核机械模拟</h3>
+                <p>学习真实的机车操作原理，包括风压控制、换挡机制和信号识别，适合对机械和工程感兴趣的玩家。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🗺️</div>
+                <h3 class="feature-title">探索世界景观</h3>
+                <p>跟随列车穿越壮丽的自然风光，从繁华都市到荒野山脉，在旅途中享受治愈系的风景。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🤝</div>
+                <h3 class="feature-title">社区与分享</h3>
+                <p>加入全球玩家社区，下载其他玩家制作的地图和模组，或分享你的驾驶录像。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title">常见问题解答</h2>
+        
+        <details>
+            <summary>新手如何开始玩硬核火车模拟游戏？</summary>
+            <div class="faq-content">
+                <p>建议先从“教程模式”开始。了解基本按键布局，如刹车、加速和气阀控制。不要急于追求速度，重点在于掌握安全停车的节奏和信号灯的识别。熟悉基本的列车动力学后再尝试挑战更复杂的线路。</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>电脑配置要求高吗？</summary>
+            <div class="faq-content">
+                <p>硬核模拟类游戏对显卡和处理器有一定要求，通常需要中高端配置。休闲类和经营类游戏对配置要求较低，大多数现代电脑甚至笔记本都能流畅运行。具体配置请参考各游戏页面的“系统需求”说明。</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>有哪些经典的模拟器推荐？</summary>
+            <div class="faq-content">
+                <p>经典的模拟器包括《Train Sim World》系列（侧重真实感）、《RailWorks》系列（模组丰富）以及国产的《模拟火车》系列。这些游戏都有庞大的模组社区支持，可以下载各种真实的机车和线路。</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>手机上可以玩模拟火车游戏吗？</summary>
+            <div class="faq-content">
+                <p>可以。目前市面上有许多优秀的手机端模拟游戏，如《Train Driver: 3D Simulator》等。虽然手机屏幕尺寸限制了视野，但触屏操作和陀螺仪功能也能带来独特的驾驶体验。</p>
+            </div>
+        </details>
+
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <p>致力于为玩家提供最全、最新的火车游戏资讯与下载服务。</p>
+            </div>
+            <div class="footer-col">
+                <h4>热门分类</h4>
+                <ul>
+                    <li><a href="#">高铁模拟</a></li>
+                    <li><a href="#">蒸汽机车</a></li>
+                    <li><a href="#">货运管理</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助支持</h4>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 TrainSim Game Library. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
