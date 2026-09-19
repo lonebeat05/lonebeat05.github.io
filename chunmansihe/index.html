@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="春满四合院 - 传统四合院建筑文化、庭院景观设计、春季赏花指南及居住生活美学。探索老北京四合院的春日韵味与建筑智慧。">
+    <meta name="keywords" content="春满四合院,四合院建筑,传统庭院设计,北京四合院,中式园林,老北京生活">
+    <title>春满四合院-传统庭院建筑与春日居住美学指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --bg-color: #FDFBF7;
+            --text-color: #333333;
+            --light-text: #666666;
+            --accent-green: #556B2F;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-size: 14px;
+            color: var(--light-text);
+            font-weight: normal;
+            margin-left: 10px;
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/springcourtyard/1920/800.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(210, 105, 30, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+        }
+
+        /* 主题分类 */
+        .categories {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--light-text);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-img {
+            height: 160px;
+            width: 100%;
+        }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .category-info p {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        /* 春日特辑 */
+        .spring-feature {
+            background-color: #fff;
+            padding: 80px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .feature-layout {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .feature-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-content h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            color: var(--light-text);
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .feature-list li::before {
+            content: "✔";
+            color: var(--accent-green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* 建筑智慧 */
+        .wisdom-section {
+            background-color: #f4f1ea;
+            padding: 80px 0;
+        }
+
+        .wisdom-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .wisdom-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .wisdom-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .wisdom-card p {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--light-text);
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: "-";
+        }
+
+        .faq-item .faq-question::after {
+            content: "+";
+            font-size: 20px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2c2c2c;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .feature-layout {
+                flex-direction: column;
+            }
+
+            .wisdom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">春满四合院 <span>文化指南</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#architecture">建筑美学</a></li>
+                    <li><a href="#spring">春日特辑</a></li>
+                    <li><a href="#living">居住生活</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <button class="search-btn">🔍 搜索</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>春满四合院：传统庭院的四季流转与生活智慧</h1>
+                <p>探寻老北京四合院的春日韵味，感受中式园林的居住美学与建筑智慧。</p>
+                <a href="#spring" class="cta-button">探索春日之美</a>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="container categories" id="architecture">
+            <div class="section-title">
+                <h2>四大核心板块</h2>
+                <p>全方位解读四合院文化与生活方式</p>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/courtyard1/400/300.jpg" alt="四合院建筑结构" class="category-img">
+                    <div class="category-info">
+                        <h3>建筑结构</h3>
+                        <p>解析四合院的平面布局、屋顶形式与门窗装饰，了解传统木构架的魅力。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/springflower/400/300.jpg" alt="庭院植物搭配" class="category-img">
+                    <div class="category-info">
+                        <h3>庭院植物</h3>
+                        <p>春季适合种植的植物推荐，桃李杏樱与古松翠柏的搭配美学。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/furniture/400/300.jpg" alt="室内陈设" class="category-img">
+                    <div class="category-info">
+                        <h3>室内陈设</h3>
+                        <p>明清家具的选择与摆放，营造雅致舒适的传统居住空间。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/tea/400/300.jpg" alt="生活雅趣" class="category-img">
+                    <div class="category-info">
+                        <h3>生活雅趣</h3>
+                        <p>品茶、听戏、养鸟，体验四合院里的慢生活与民俗风情。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Spring Feature Section -->
+        <section class="spring-feature" id="spring">
+            <div class="container feature-layout">
+                <div class="feature-image">
+                    <img src="https://picsum.photos/seed/pagoda/800/600.jpg" alt="四合院春景">
+                </div>
+                <div class="feature-content">
+                    <h2>春满四合院：万物复苏的庭院时光</h2>
+                    <p>春日里的四合院，是北京城最生动的时刻。当冰雪消融，庭院中的海棠、玉兰竞相开放，与斑驳的青砖灰瓦相映成趣。四合院的布局讲究“四水归堂”，在春雨绵绵之际，雨水顺着屋檐滴落，汇入天井，寓意财源广进，也带来了满院的生机。</p>
+                    <ul class="feature-list">
+                        <li><strong>海棠花雨：</strong>“春日海棠醉”是四合院赏花的经典场景，粉白相间的花朵压满枝头。</li>
+                        <li><strong>听雨品茗：</strong>在室内品茶，窗外雨打芭蕉，感受中式园林的意境。</li>
+                        <li><strong>风筝飞舞：</strong>在宽敞的院落中放风筝，是老北京春日的传统娱乐活动。</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="background-color: var(--accent-green);">阅读更多春日指南</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wisdom Section -->
+        <section class="wisdom-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>建筑与居住智慧</h2>
+                    <p>四合院不仅是居住空间，更是中国传统哲学的载体</p>
+                </div>
+                <div class="wisdom-grid">
+                    <div class="wisdom-card">
+                        <h3>尊卑有序</h3>
+                        <p>四合院严格遵循中轴对称原则，正房坐北朝南，供长辈居住；厢房住晚辈，体现长幼有序的儒家伦理。</p>
+                    </div>
+                    <div class="wisdom-card">
+                        <h3>风水讲究</h3>
+                        <p>讲究“坐北朝南”，采光通风极佳；天井设计用于采光、排水及积聚人气，形成良好的微气候。</p>
+                    </div>
+                    <div class="wisdom-card">
+                        <h3>天人合一</h3>
+                        <p>庭院作为室内与室外的过渡空间，将自然景观引入室内，实现人与自然的和谐共生。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="container faq-section" id="faq">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+                <p>关于四合院保护、改造与生活的疑问</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">现代四合院改造需要注意什么？</div>
+                <div class="faq-answer">改造时需严格遵循文物保护原则，保留原有的格局和梁柱结构。在内部装修上，应使用现代材料提升舒适度，同时保持外立面的传统风貌。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">四合院适合什么样的居住人群？</div>
+                <div class="faq-answer">四合院适合喜爱传统文化、追求私密空间且有一定经济基础的家庭。其封闭式的院落环境适合养花种草，享受宁静的田园生活。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">春季四合院如何防潮？</div>
+                <div class="faq-answer">春季雨水多，需注意检查屋檐排水是否通畅。室内可放置干燥剂，保持室内通风，避免地面返潮。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 15px;">春满四合院</div>
+                    <p style="font-size: 14px; line-height: 1.8;">致力于传播中国传统四合院文化，分享建筑美学、庭院设计与生活方式，让更多人了解老北京的魅力。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>栏目导航</h4>
+                    <ul>
+                        <li><a href="#">建筑赏析</a></li>
+                        <li><a href="#">庭院设计</a></li>
+                        <li><a href="#">生活百科</a></li>
+                        <li><a href="#">文化传承</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">小红书</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 春满四合院文化指南. All Rights Reserved. 京ICP备XXXXXXXX号
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项状态
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 简单的平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
